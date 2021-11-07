@@ -1,0 +1,1 @@
+Our "Hello World" program is inside of a class that matches the name of the file, and inside the main() function. Compile with javac, run with java.

@@ -1,0 +1,3 @@
+Methods can return a data type, just replace void with some data type. Just like in python, we use the return keyword to return something. Every possible path must reach a return statement, otherwise the compiler will throw an error.
+You can overload methods, meaning you give them multiple definitions with parameters.
+Java allows recursion, just like Python. Calling a different version of a method in the definition of an overloaded method is not recursion.

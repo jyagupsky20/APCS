@@ -1,0 +1,1 @@
+The most common mistake I made was not checking if there was a return statement in every path of the method. It's sometimes helpful to the method top-down, writing the general structure before filling in the specifics.

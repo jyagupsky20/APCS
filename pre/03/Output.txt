@@ -1,0 +1,10 @@
+1) The output of the program is as follows:
+No, I wug.
+You wugga wug.
+I wug.
+2)
+main: "No, I "
+zoop:
+baffle: "wug"
+ping: ".\n"
+3) The methods would call each other endlessly, leading to an infinite loop.

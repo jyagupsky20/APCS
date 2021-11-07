@@ -1,0 +1,6 @@
+An array of elements of type Type is of type Type[]. It can be initialized using array = new Type[size]. Unlike in python, array sizes are fixed.
+Setting an array equal to a and an b=a means that b points to a: they are linked. You can avoid this with b=Arrays.copyOf(a,#ofelements).
+You can get the length of an array a with a.length. You can loop through the elements of an array using a for loop and counter, or you can use the more advanced for loop:
+for (Type value : a){
+  stuffWithValue;
+}

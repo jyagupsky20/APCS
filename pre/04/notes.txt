@@ -1,0 +1,15 @@
+if (boolean){
+  stuff;
+}
+else if (other boolean){
+  more stuff;
+}
+else if(...)
+.
+.
+.
+else {
+  last option;
+}
+
+A boolean is anything that can be true or false. && is and, || is or, ! is not.

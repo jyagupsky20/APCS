@@ -1,0 +1,6 @@
+Variables have to be declared with a type, unlike Python. The type of a variable must match the value you assign to it, otherwise you'll get an error.
+Setting one variable equal to another sets the value of the second variable to the value of the first variable at the current point in execution. Changing the first variable's value after the assignment won't affect the second variable's value.
+Printing is done with System.out.print or System.out.println for print + new line.
+Floating point numbers have decimals. Be careful to check whether you're doing floating point or integer division, i.e division with rounding down.
+Floating points give rounding errors sometimes, so use ints when you can.
+Strings can be added, but there are no other string operations.

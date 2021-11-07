@@ -1,0 +1,4 @@
+public static RETURNTYPE NAME(ARGUMENTS){
+ BODY
+}
+The arguments of a method must have a type, and the type must match whenever you call the method.

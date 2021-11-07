@@ -1,0 +1,8 @@
+while (boolean){
+  stuff;
+}
+
+for(initialization, condition, increment){
+  stuff;
+}
+The while loops are the same as Python while loops, although the for loops require you to initialize a counter, set an end condition, and increment or decrement the counter by some amount.
