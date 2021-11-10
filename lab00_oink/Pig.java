@@ -24,12 +24,27 @@
 
 /*
 DISCO:
+ - You can easily convert a char to a String by adding "" to a char. This makes it much easier to get
+ a substring of length 1.
+
 QCC:
-NEW IN v1:
-We fixed the problems with the parseInput method. We also added the formatOutput method.
-As of right now, the translator can handle single words.
-We have yet to add punctuation functionality.
+ - blah
+
+HOW WE UTILIZED SCANNER DEMO:
+ - We used the hasNext as the basis for our loop, so we don't get error messages once we reach the
+ end of a file. To run our Scanner on a file, simply write $java Pig < [FILENAME. We also fixed the infinite loop
+ from the scanner demo by allowing the user to exit by typing exit()
+
+WHAT CAUSES THE RUNTIME ERROR IN THE SCANNER DEMO:
+ - There isn't a runtime error, but there isn't a very natural way of killing the loop, since the hasNext()
+method is never false. The only way out is to do a ^C, or to close the window.
+
+NEW IN v2:
+ - Refactored some of our methods using methods from HW31. Added scanner functionality, which also allows
+ us to take files as inputs
 */
+import java.util.Scanner;
+
 public class Pig {
 
     private static final String VOWELS = "aeiouy";
@@ -81,7 +96,7 @@ public class Pig {
       }
       else {
         for (int i = 1; i < input.length(); i++) {
-          if (VOWELS.contains(input.charAt(i) + "")) {
+          if (isAVowel(input.charAt(i) + "")) {
             return input.substring(i) + input.substring(0, i) + "ay";
           }
         }
@@ -155,27 +170,64 @@ public class Pig {
     hasA("cat", "p") -> false
   **/
 
+  public static boolean isAVowel( String letter ) {
+		if ( hasA( VOWELS, letter) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+  public static boolean hasA( String w, String letter )
+  {
+    int length = w.length();
+    for (int i = 0; i < length; i++) {
+      String testChar = w.substring(i, i+1);
+      if (testChar.equals(letter)) {
+        return true;
+      }
+    }
+    return false;
+  }//end hasA()
+
+  public static String allVowels(String w){
+    String justVowels = "";
+		for (int i = 0; i < w.length(); i++) {
+			if (isAVowel(w.toLowerCase().charAt(i)+"" ) ) {
+				justVowels += w.substring(i, i+1);
+			}
+		}
+		return justVowels;
+  }
+  public static int countVowels( String w )
+  {
+    int vowelCtr = 0;
+    int length = w.length();
+    for (int i = 0; i < length; i++) {
+      String testChar = w.substring(i, i+1);
+      if (isAVowel(testChar)) {
+        vowelCtr += 1;
+      }
+    }
+    return vowelCtr;
+  }
+
+  public static String firstVowel(String w){
+    for (int i = 0; i < w.length(); i++) {
+      if (isAVowel(w.charAt(i)+"")) {
+        return w.charAt(i) + "";
+      }
+    }
+    return "";
+  }
+
 
   public static void main( String[] args ) {
-
-    // for( String word : args ) {
-    //   System.out.println( "allVowels \t" + allVowels(word) );
-    //   System.out.println( "firstVowels \t" + firstVowel(word) );
-    //   System.out.println( "countVowels \t" + countVowels(word) );
-    //   System.out.println( "engToPig \t" + engToPig(word) );
-    //   System.out.println( "---------------------" );
-    // }
-
-    System.out.println( engToPig("Apples") ); // Applesway
-  	System.out.println( engToPig("String") ); // Ingstray
-  	System.out.println( engToPig("pig") ); // igpay
-  	System.out.println( engToPig("my") ); // ymay
-  	System.out.println( engToPig("psychology") ); // ychologypsay
-  	System.out.println( engToPig("yonder") ); // onderyay
-  	System.out.println( engToPig("i") ); // i
-    System.out.println( engToPig("payday") ); // aydaypay
-    System.out.println( engToPig("tyrant") ); // yranttay
-    System.out.println( engToPig("myanmar") ); // yanmarmay
+    Scanner in = new Scanner(System.in);
+    String word = "";
+    while(in.hasNext() && !word.equals("exit()")){
+      word = in.next();
+      System.out.println(engToPig(word));
+    }
 
 
 
