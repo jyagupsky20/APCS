@@ -1,9 +1,9 @@
 /***
- * Clyde "Thluffy" Sinclair, Joshua "Quacker" Yagupsky, Nora Miller (Team Walrus)
+ * Gabriel Thompson, Joshua "Quacker" Yagupsky, Nora Miller (Team Walrus)
  * APCS
  * L00 -- Pig Latin translation
  * 2021-11-08
- * time spent: ?hrs
+ * time spent: 2.5hrs
  *
  * class Pig
  * a Pig Latin translator
@@ -25,21 +25,30 @@
 /*
 DISCO:
  - You can easily convert a char to a String by adding "" to a char. This makes it much easier to get
- a substring of length 1.
+   a turn a char into a String with length 1.
+ - You can use .toLowerCase() to convert a String to lowercase
+ - Y's are treated as consonants if they are the first letter, but are treated as vowels if they are not
+ - You can use the < and > operators in terminal commands to use file streams as arguments.
+ - With the Scanner, you can use Scanner.next() to receive the next line of input, either from a file or typing
 
 QCC:
- - blah
+ - Our procedure for exiting the Scanner prompt is a bit glitchy, and requires you to enter "exit" twice before
+   it exits the program. We spent along time trying to fix this, but eventually gave up on it.
+ - Our solution relied on using special characters as markers for uses of Y and capital letters. This is a bit
+   botched, so how could you write an efficient program that *doesn't* use that?
 
 HOW WE UTILIZED SCANNER DEMO:
- - We used the hasNext/hasNextLine as the basis for our loop, so we don't get error messages once we reach the
- end of a file. To run our Scanner on a file, simply write $java Pig < [FILENAME]
+ - We used the hasNext as the basis for our loop, so we don't get error messages once we reach the
+   end of a file. To run our Scanner on a file, simply write $java Pig < [FILENAME. We also fixed the infinite loop
+   from the scanner demo by allowing the user to exit by typing exit()
 
 WHAT CAUSES THE RUNTIME ERROR IN THE SCANNER DEMO:
  - There isn't a runtime error, but there isn't a very natural way of killing the loop, since the hasNext()
-method is never false. The only way out is to do a ^C, or to close the window.
+   method is never false. The only way out is to do a ^C, or to close the window.
 
 NEW IN v2:
- - Added allVowels and countVowels to our program.
+ - Refactored some of our methods using methods from HW31. Added scanner functionality, which also allows
+   us to take files as inputs
 */
 import java.util.Scanner;
 
@@ -125,7 +134,7 @@ public class Pig {
             isPunc("b") -> false
       =====================================*/
     public static boolean isPunc( String symbol ) {
-	    return PUNCS.indexOf( symbol ) != -1;
+      return PUNCS.indexOf( symbol ) != -1;
     }
 
 
@@ -158,7 +167,7 @@ public class Pig {
             beginsWithUpper("apple") -> false
       =====================================*/
     public static boolean beginsWithUpper( String w ) {
-	    return isUpperCase(w.substring(0,1) );
+      return isUpperCase(w.substring(0,1) );
     }
 
     /**
@@ -169,12 +178,12 @@ public class Pig {
   **/
 
   public static boolean isAVowel( String letter ) {
-		if ( hasA( VOWELS, letter) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    if ( hasA( VOWELS, letter) ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   public static boolean hasA( String w, String letter )
   {
     int length = w.length();
@@ -189,12 +198,12 @@ public class Pig {
 
   public static String allVowels(String w){
     String justVowels = "";
-		for (int i = 0; i < w.length(); i++) {
-			if (isAVowel(w.toLowerCase().charAt(i)+"" ) ) {
-				justVowels += w.substring(i, i+1);
-			}
-		}
-		return justVowels;
+    for (int i = 0; i < w.length(); i++) {
+      if (isAVowel(w.toLowerCase().charAt(i)+"" ) ) {
+        justVowels += w.substring(i, i+1);
+      }
+    }
+    return justVowels;
   }
   public static int countVowels( String w )
   {
@@ -221,15 +230,11 @@ public class Pig {
 
   public static void main( String[] args ) {
     Scanner in = new Scanner(System.in);
-    String word = in.nextLine();
-    while(!word.equals("") && in.hasNextLine()){
+    String word = "";
+    while(in.hasNext() && !word.equals("exit")){
+      word = in.next();
       System.out.println(engToPig(word));
-      if(in.hasNextLine()) {
-        word = in.nextLine();
-      }
     }
-
-
 
   }//end main()
 

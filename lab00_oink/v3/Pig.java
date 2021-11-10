@@ -1,9 +1,9 @@
 /***
- * Clyde "Thluffy" Sinclair, Joshua "Quacker" Yagupsky, Nora Miller (Team Walrus)
+ * Gabriel Thompson, Joshua "Quacker" Yagupsky, Nora Miller (Team Walrus)
  * APCS
  * L00 -- Pig Latin translation
  * 2021-11-08
- * time spent: ?hrs
+ * time spent: 2.5hrs
  *
  * class Pig
  * a Pig Latin translator
@@ -43,12 +43,11 @@ HOW WE UTILIZED SCANNER DEMO:
    from the scanner demo by allowing the user to exit by typing exit()
 
 WHAT CAUSES THE RUNTIME ERROR IN THE SCANNER DEMO:
- - There isn't a runtime error, rather a logical error, but there isn't a very natural way of killing the loop,
-   since the hasNext() method is never false. The only way out is to do a ^C, or to close the window.
+ - There isn't a runtime error, but there isn't a very natural way of killing the loop, since the hasNext()
+   method is never false. The only way out is to do a ^C, or to close the window.
 
-NEW IN v2:
- - Refactored some of our methods using methods from HW31. Added scanner functionality, which also allows
-   us to take files as inputs
+NEW IN v3:
+ - Accounts for punctuation, although it assumes that all punctuation characters are at end of the word
 */
 import java.util.Scanner;
 
