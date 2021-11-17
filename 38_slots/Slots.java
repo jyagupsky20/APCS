@@ -13,16 +13,16 @@ public class Slots {
 
   //instance variable to represent master copy for slot machine
   private static final String[] FRUITS = {
-    "lime", "lime", "lime", 
-    "lemon", "lemon", "lemon", 
+    "lime", "lime", "lime",
+    "lemon", "lemon", "lemon",
     "cherry", "cherry", "cherry",
     /*
       add extra fruits until your heart is content...
       Some suggestions:
-    "orange", "orange", "orange", 
-    "grapefruit", "grapefruit", "grapefruit", 
-    "tangerine", "tangerine", "tangerine", 
-    "ugli", "ugli", "ugli", 
+    "orange", "orange", "orange",
+    "grapefruit", "grapefruit", "grapefruit",
+    "tangerine", "tangerine", "tangerine",
+    "ugli", "ugli", "ugli",
     */
     "peach", "peach", "peach"
   };
@@ -40,10 +40,10 @@ public class Slots {
   	_fruits = new String[FRUITS.length];
   	for(int i = 0; i < _fruits.length; i++){
   		_fruits[i]=FRUITS[i];
-  		
+
   	}
     //allocate memory for _fruits based on size of FRUITS:
-  
+
 
     //copy elements of FRUITS into _fruits:
 
@@ -52,7 +52,7 @@ public class Slots {
 
   /*=====================================
     String toString() -- overrides inherited toString()
-    pre:  
+    pre:
     post: returns String of elements in slots 0 thru 2, separated by tabs
     =====================================*/
   public String toString()
@@ -99,8 +99,9 @@ public class Slots {
   public boolean jackpot()
   {
     boolean retBoo = false;
-
-
+    if(_fruits[0] == _fruits[1] && _fruits[1] == _fruits[2]){
+      retBoo = true;
+    }
     return retBoo;
   }
 
@@ -109,17 +110,19 @@ public class Slots {
     boolean miniWin() -- checks for a winning combo
     pre:  _fruits is existing array
     post: returns true if first 3 slots represent winning combo,
-    or if first 3 slots mutually distinct, 
+    or if first 3 slots mutually distinct,
     false otherwise
     =====================================*/
-  /*public boolean miniWin()
+  public boolean miniWin()
   {
-    //boolean retBoo = ?
+    boolean retBoo = jackpot();
+    if (_fruits[0] != _fruits[1] && _fruits[1] != _fruits[2] && _fruits[0] != _fruits[2]){
+      retBoo = true;
+    }
 
+    return retBoo;
+  }
 
-    //return retBoo;
-  }*/
-  
 
 
   //main() method for testing
@@ -138,7 +141,6 @@ public class Slots {
     System.out.println( "Machine01 state:\t" + machine01 );
     System.out.println( "Machine02 state:\t" + machine02 );
     System.out.println();
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //test gamble-until-you-win mechanism
     System.out.println( "Preparing to spin until a mini win! . . ." );
     System.out.println( "------------------------------------" );
@@ -162,7 +164,6 @@ public class Slots {
     System.out.println( "====================================" );
     System.out.println( "Your spin..." + "\t" + machine01 );
     System.out.println( "JACKPOT!\n" );
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main
 
 }//end class Slots
