@@ -1,13 +1,14 @@
-
-/*****************************************************
- * Clyde "Thluffy" Sinclair
- * APCS pd00
- * HW38 -- Shmoney
- * 2021-11-18
- *
- * class Slots
- * skeleton
- *****************************************************/
+/***
+ * Walrus (Humans: Daniel Jung, Joshua Yagupsky, Ethan Lam; Ducks: Ralph, Quacker, Carl)
+ * APCS
+ * HW38 -- Jackpot!
+ * 2021-11-17
+ * time spent: 0.3hrs
+ * QCC:
+ 		-
+ * Disco:
+ 		-
+ ***/
 
 public class Slots {
 
@@ -16,14 +17,11 @@ public class Slots {
     "lime", "lime", "lime",
     "lemon", "lemon", "lemon",
     "cherry", "cherry", "cherry",
-    /*
-      add extra fruits until your heart is content...
-      Some suggestions:
     "orange", "orange", "orange",
     "grapefruit", "grapefruit", "grapefruit",
     "tangerine", "tangerine", "tangerine",
     "ugli", "ugli", "ugli",
-    */
+    "banana", "banana", "banana",
     "peach", "peach", "peach"
   };
 
