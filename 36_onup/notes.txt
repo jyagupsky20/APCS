@@ -1,0 +1,29 @@
+/***
+ * Joshua Yagupsky
+ * APCS
+ * HW36 -- Notes on debugging
+ * 2021-11-18
+ * time spent: 0.2hrs
+ * QCC:
+ 		-
+ * Disco:
+ 		-
+ ***/
+
+Compile-time: Compiler doesn't understand code
+Run-time: Running the program leads to an error
+Logic: Code does something you don't want
+
+1 fix at a time
+Carefully read error messages
+Comment out areas to see what's causing the problem
+
+Printlns are helpful to identify what your code is actually doing
+Exception messages provide useful info
+
+Return to previous working version
+MAKE SMALL CHANGES
+Simplify complicated expressions
+
+Take a break!
+Have someone look over your code, or try to explain it to your duck.
