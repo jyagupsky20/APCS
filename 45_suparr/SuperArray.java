@@ -1,16 +1,19 @@
 /***
  * Walrus (Humans: Daniel Jung, Joshua Yagupsky, Ethan Lam; Ducks: Ralph, Quacker, Carl)
  * APCS
- * HW44: Array of Grade 316
- * 2021-12-07
- * time spent: 0.5hrs
+ * HW45: Array of Titanium
+ * 2021-12-08
+ * time spent: 0.0hrs
  * QCC:
  * Disco:
-    - It's useful to have an expandToSize method which will expand _data to a given size if that size is bigger than the old size.
+    - You can have the variable type of an object be an interface, in this case ListInt,
+    and it will assume the functionality of its object type, in this case SuperArray. However,
+    - If we try to access features that are not defined in the interface, such as the _size parameter,
+    it will not work.
  ***/
 import java.util.Arrays;
 
-public class SuperArray{
+public class SuperArray implements ListInt{
 
   private int[] _data;  //underlying container
   private int _size;    //number of elements in this SuperArray
@@ -68,12 +71,14 @@ public class SuperArray{
 
   //inserts an integer at the specified index
   public void addAtIndex(int index, int newVal){
-    expandToSize(_size+1);
-    for (int i = _size; i > index; i--){
-      _data[i] = _data[i-1];
+    if(index < _size){
+      expandToSize(_size+1);
+      for (int i = _size; i > index; i--){
+        _data[i] = _data[i-1];
+      }
+      _data[index] = newVal;
+      _size++;
     }
-    _data[index] = newVal;
-    _size++;
   }
 
   //Removes the element at a given index
@@ -109,7 +114,7 @@ public class SuperArray{
   //main method for testing
   public static void main( String[] args )
   {
-  	SuperArray bob = new SuperArray();
+  	ListInt bob = new SuperArray();
     System.out.println(bob);
     //Regular add method
     bob.add(3);
