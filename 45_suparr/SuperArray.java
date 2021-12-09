@@ -3,7 +3,7 @@
  * APCS
  * HW45: Array of Titanium
  * 2021-12-08
- * time spent: 0.0hrs
+ * time spent: 0.4hrs
  * QCC:
  * Disco:
     - You can have the variable type of an object be an interface, in this case ListInt,
