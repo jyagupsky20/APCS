@@ -1,8 +1,8 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
-// HW47 -- ?
+// Walrus (Humans: Daniel Jung, Joshua Yagupsky, Ethan Lam; Ducks: Ralph, Quacker, Carl)
+// APCS pd8
+// HW47 Guess Again
 // 2021-12-15w
-// time spent: _ hrs
+// time spent: .25 hrs
 
 /***
  * class GuessNumber -- fun fun fun!
@@ -21,7 +21,7 @@
 
 /***
     DISCO:
-
+    - Wrapper methods can be helpful for testing different ways of writing the same code.
     QCC:
 
  ***/
@@ -37,7 +37,7 @@ public class GuessNumber
 
   /*==================================================
     constructor -- initializes a guess-a-number game
-    pre:  
+    pre:
     post: _lo is lower bound, _hi is upper bound,
     _guessCtr is 1, _target is random int on range [_lo,_hi]
     ==================================================*/
@@ -49,7 +49,7 @@ public class GuessNumber
 
     //pick random number in range [a,b]
 
-    _target = (int) (Math.random()*(_hi+1-_low)+_low);
+    _target = (int) (Math.random()*(_hi+1-_lo)+_lo);
   }
 
 
@@ -64,7 +64,22 @@ public class GuessNumber
 
     //3 cases: we either found it, too hi, too lo
 
-    /* YOUR CODE HERE */
+    if (guess == _target) {
+      System.out.println("Correct! It took " + _guessCtr + " guesses!");
+    }
+    else{
+      _guessCtr++;
+      System.out.print("Too ");
+      if(guess > _target){
+        System.out.println("high");
+        _hi = Math.min(_hi, guess-1);
+      }
+      else{
+        System.out.println("low");
+        _lo = Math.max(_lo, guess+1);
+      }
+      playRec();
+    }
   }
 
 
@@ -84,7 +99,21 @@ public class GuessNumber
       //3 cases: we either found it, too hi, too lo
 
       /* YOUR CODE HERE */
-
+      if (guess == _target) {
+        System.out.println("Correct! It took " + _guessCtr + " guesses!");
+        break;
+      }
+      else{
+        System.out.print("Too ");
+        if(guess > _target){
+          System.out.println("high");
+          _hi = Math.min(_hi, guess-1);
+        }
+        else{
+          System.out.println("low");
+          _lo = Math.max(_lo, guess+1);
+        }
+      }
       _guessCtr++;
     }
   }
@@ -102,13 +131,11 @@ public class GuessNumber
   //main method to run it all
   public static void main( String[] args )
   {
-    /*-----------------------------
     //instantiate a new game
     GuessNumber g = new GuessNumber(1,100);
 
     //start the game
     g.play();
-    -----------------------------*/
   }
 
 }//end class GuessNumber
