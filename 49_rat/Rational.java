@@ -1,12 +1,11 @@
 /***
  * Walrus (Humans: Daniel Jung, Joshua Yagupsky, Ethan Lam; Ducks: Ralph, Quacker, Carl)
  * APCS
- * HW42 -- Be More Rational
- * 2021-12-05
+ * HW49 -- Rational Standards Compliance
+ * 2021-12-22
  * time spent: 0.2hrs
  * QCC:
  * Disco:
-    - You don't have to reduce to add two Rationals, just find a common denominator that is guaranteed to work.
  ***/
 
 public class Rational implements Comparable{
