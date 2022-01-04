@@ -34,7 +34,7 @@ public class Rational implements Comparable{
 			return false;
 		}
 		Rational r = (Rational) o;
-		return this.floatValue() == r.floatValue();
+		return this.numerator*r.denominator == r.numerator*this.denominator;
 	}
 	public double floatValue(){
 		return ((double) numerator)/((double) denominator);
@@ -55,9 +55,9 @@ public class Rational implements Comparable{
 		divZero();
 	}
 
-	public int gcd() {
-		int a = this.numerator;
-		int b = this.denominator;
+	public static int gcd(int x, int y) {
+		int a = x;
+		int b = y;
 		int c;
 		while (a*b != 0) { //Are either a or b zero?
 			c = a%b;
@@ -66,7 +66,9 @@ public class Rational implements Comparable{
 		}
 		return a+b; //Return the nonzero one
 	}
-
+	public int gcd(){
+		return gcd(this.numerator,this.denominator);
+	}
 	public void reduce(){
 		int g = this.gcd();
 		this.numerator /= g;
@@ -78,15 +80,10 @@ public class Rational implements Comparable{
 			throw new ClassCastException("\ncompareTo() input not a Rational");
 		}
 		Rational r = (Rational) o;
-		if(this.floatValue() == r.floatValue()){
-			return 0;
-		}
-		else if (this.floatValue() > r.floatValue()) {
-			return 1;
-		}
-		else {
-			return -1;
-		}
+		Rational t = new Rational(this.numerator,this.denominator);
+		r.reduce();
+		t.reduce();
+		return t.numerator*r.denominator-t.denominator*r.numerator;
 	}
 
 	public void add(Rational r) {
