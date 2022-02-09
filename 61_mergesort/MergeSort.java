@@ -1,4 +1,9 @@
 /***
+  Team Temporary Terrestrial Tetrad (Joshua Yagupsky, Jaylen Zeng)
+  APCS pd7
+  HW#61 -- Instructions so Simple...
+  2022-02-08
+  time spent:  hrs
   class MergeSort
   Implements mergesort on array of ints.
 
@@ -51,10 +56,22 @@ public class MergeSort
    ******************************************************/
   public static int[] sort( int[] arr )
   {
-  	//Base case: arr is 1 item long:
+  	//Base case: arr is 1 item long
+    //Bootstrap case: Split arr, sort each half, merge sorted halves
   	if(arr.length != 1){
   		int midpt = arr.length / 2;
-  		//Finish this here
+  		int[] left = new int[midpt]; //Goes from 0 through midpt-1
+      int[] right = new int[arr.length-midpt]; //Goes from midpt to the end
+
+      //populates subarrays
+      for (int i = 0; i < left.length; i++) {
+        left[i] = arr[i];
+      }
+      for(int i = 0; i < right.length; i++) {
+        right[i] = arr[i + midpt];
+      }
+
+      arr = merge(sort(left), sort(right));
   	}
   	return arr;
   }//end sort()
@@ -82,7 +99,7 @@ public class MergeSort
   //main method for testing
   public static void main( String [] args )
   {
-    
+
       int[] arr0 = {0};
       int[] arr1 = {1};
       int[] arr2 = {1,2};
@@ -96,19 +113,17 @@ public class MergeSort
       printArray( arr3 );
       mess(arr3);
       printArray( arr3 );
-	
+
       System.out.println("\nMerging arr1 and arr0: ");
       printArray( merge(arr1,arr0) );
 
       System.out.println("\nMerging arr4 and arr6: ");
       printArray( merge(arr4,arr6) );
-/*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
       System.out.println("\nSorting arr4-7...");
       printArray( sort( arr4 ) );
       printArray( sort( arr5 ) );
       printArray( sort( arr6 ) );
       printArray( sort( arr7 ) );
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
 }//end class MergeSort
