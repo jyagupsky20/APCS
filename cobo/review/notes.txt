@@ -1,0 +1,14 @@
+Activity 1:
+1:
+a) sentimentVal(String)
+b) It requires a String parameter. Putting in a variable that is not a String will lead to an error.
+c) The method returns a double.
+2:
+happily: 2.32
+terrible: -3.38
+cold: -0.04
+dreadful: -1.93
+refreshing: 2.38
+melancholy: 0.0
+3)
+Only (a) would run, since it takes in one String and stores the output as a double. (b) takes in a double as input, and (c) takes in two Strings.
