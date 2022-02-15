@@ -1,5 +1,12 @@
+/*
+Joshua Yagupsky, Neil Lin
+APCS pd07
+HW64: Revisitation
+2022-02-14
+time spent: 1.5 hrs
+*/
 public class bunnyEars{
-  public static int bunnyEars(int bunnies) {
+  public int bunnyEars(int bunnies) {
     if (bunnies == 0) {
       return 0;
     }

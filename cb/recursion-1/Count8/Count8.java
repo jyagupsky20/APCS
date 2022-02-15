@@ -1,3 +1,10 @@
+/*
+Joshua Yagupsky, Neil Lin
+APCS pd07
+HW64: Revisitation
+2022-02-14
+time spent: 1.5 hrs
+*/
 public class Count8{
   public static int count8(int n) {
     if (n == 0) {
