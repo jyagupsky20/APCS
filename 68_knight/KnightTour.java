@@ -3,7 +3,7 @@ Team Slightly Under-ripe Bananas (Joshua Yagupsky, Marcus Wu, Ivina Wang)
 APCS pd7
 HW68 -- ...and T-, Tr-, Tri-, Tries Again Until It's Done
 2022-03-1
-time spent:  hr
+time spent: 1 hr
 */
 /***
  * SKELETON
@@ -16,16 +16,23 @@ time spent:  hr
  * $ java KnightTour [N]
  *
  * ALGO
- *
+ * 1. If the solution has been found, stop.
+ * 2. If this is past the last move, the solution has been found. Exit.
+ * 3. If the knight makes an illegal move (outside the board or onto another existing knight), backtrack
+ * 4. Place the knight at its designated spot
+ * 5. Try adding a knight at every possible knight's move away from the current location. If none work, backtrack.
  * DISCO
+ *  We don't need to check every possible knight's move seperately. We can instead look in a 5x5 grid and only look at the valid
+ *  knight's moves.
  *
- * QCC
+ * QCC:
+ * Is there a way to run this code faster? Like if you want to test n > 7
  *
  * Mean execution times for boards of size n*n:
- * n=5   __s    across __ executions
- * n=6   __s    across __ executions
- * n=7   __s    across __ executions
- * n=8   __s    across __ executions
+ * n=5   2.25s    across 2 executions
+ * n=6   31.9s    across 2 executions
+ * n=7   25.5s    across 2 executions
+ * n=8   63m    across 1 executions
  *
  * POSIX PROTIP: to measure execution time from BASH, use time program:
  * $ time java KnightTour 5
