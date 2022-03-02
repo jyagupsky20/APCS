@@ -1,9 +1,10 @@
-// Clyde Sinclair
-// APCS pd0
-// HW68 -- recursively probing for a closed cycle
-// 2022-02-28m
-// time spent:  hrs
-
+/*
+Team Slightly Under-ripe Bananas (Joshua Yagupsky, Marcus Wu, Ivina Wang)
+APCS pd7
+HW68 -- ...and T-, Tr-, Tri-, Tries Again Until It's Done
+2022-03-1
+time spent:  hr
+*/
 /***
  * SKELETON
  * class KnightTour (and supporting class TourFinder)
@@ -84,22 +85,22 @@ class TourFinder
   //instance vars
   private int[][] _board;
   private int _sideLength; //board has dimensions n x n
-  private boolean _solved = ???
+  private boolean _solved = false;
 
   //constructor -- build board of size n x n
   public TourFinder( int n )
   {
-    _sideLength = n + 4;
+    _sideLength = n;
 
     //init 2D array to represent square board with moat
-    _board = new int[_sidelength][_sidelength];
+    _board = new int[_sideLength + 4][_sideLength + 4];
 
     //SETUP BOARD --  0 for unvisited cell
     //               -1 for cell in moat
     //---------------------------------------------------------
-    for(int x = 0; x < _sidelength; x++){
-    	for(int y = 0; y < _sidelength; y++){
-    		if(x < 2 || x > _sidelength-3 || y < 2 || y > sidelength-3){
+    for(int x = 0; x < _sideLength + 4; x++){
+    	for(int y = 0; y < _sideLength + 4; y++){
+    		if(x < 2 || x > _sideLength+1 || y < 2 || y > _sideLength+1){
     			_board[x][y] = -1;
     		}
     	}
@@ -156,16 +157,18 @@ class TourFinder
     //delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
-    if (???) System.exit(0);
+    if (_solved) {
+      System.exit(0);
+    }
 
     //primary base case: tour completed
-    if ( ??? ) {
-      ???
+    if (moves > _sideLength * _sideLength) {
+      _solved = true;
       System.out.println( this ); //refresh screen
       return;
     }
     //other base case: stepped off board or onto visited cell
-    if ( ??? ) {
+    if (_board[x][y] != 0) {
       return;
     }
     //otherwise, mark current location
@@ -173,11 +176,11 @@ class TourFinder
     else {
 
       //mark current cell with current move number
-      _board[x][y] = ???
+      _board[x][y] = moves;
 
       System.out.println( this ); //refresh screen
 
-      //delay(1000); //uncomment to slow down enough to view
+      //delay(100); //uncomment to slow down enough to view
 
       /******************************************
        * Recursively try to "solve" (find a tour) from
@@ -187,12 +190,30 @@ class TourFinder
        *     . . @ . .
        *     g . . . b
        *     . h . a .
+       *
+       *     Distance from center:
+       *     4 3 2 3 4
+       *     3 2 1 2 3
+       *     2 1 0 1 2
+       *     3 2 1 2 3
+       *     4 3 2 3 4
       ******************************************/
-      ???
+      //Loop through all possible relative positions
+      for (int i = -2; i <= 2; i++) {
+        for (int j = -2; j <= 2; j++) {
+          //Check if this position is a knight's move away from the center square:
+          if(Math.abs(i) + Math.abs(j) == 3) {
+            findTour(x + i, y + j, moves+1);
+            if(_solved){
+              return;
+            }
+          }
+        }
+      }
 
       //If made it this far, path did not lead to tour, so back up...
       // (Overwrite number at this cell with a 0.)
-        ???
+      _board[x][y] = 0;
 
       System.out.println( this ); //refresh screen
     }
