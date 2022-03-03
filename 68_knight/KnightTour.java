@@ -67,7 +67,7 @@ public class KnightTour
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for fixed starting location, use line below:
-    tf.findTour( 2, 2, 1 );
+    tf.findTour( 2, 3, 1 );
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -79,6 +79,13 @@ public class KnightTour
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // PUSHING FARTHER...
+    /*
+    1 2 4 0 0
+    0 3 5 0 0
+    0 0 6 0 0
+    0 0 0 0 0
+    0 0 0 0 0
+    */
     // Systematically attempt to solve from every position on the board?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

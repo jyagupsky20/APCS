@@ -1,0 +1,31 @@
+Team Temporary Trio of Triangles (Joshua Yagupsky, Ruby Friedman, Jomin Zhang)
+APCS pd7
+HW69 -- Making Sense
+2022-03-2
+time spent: hr
+
+Execution times:
+* n=5   2.25s    across 2 executions
+* n=6   31.9s    across 2 executions
+* n=7   25.5s    across 2 executions
+* n=8   63m    across 1 executions
+
+
+1.
+q0. No, since on a 5x5 grid, although a Knight's tour is possible starting at the top left, it is NOT possible
+starting from one below the top left.
+q1. No, since no KT exists starting one below the top left on a 5x5 grid.
+q2. As the board grows, the tree structure gets several extra layers. This means that the increase in the total number of nodes increases exponentially.
+q3. If we wish to check the entire board for starting points, we only need to check 1/8th of the total squares on the board, due to the symmetry of a square.
+
+2. ALGORITHM FOR MAZE SOLVING:
+
+1. Start at the starting position
+2. Run HELPER ALGORITHM from the starting position
+
+HELPER ALGORITHM (Takes a position)
+1. If position is on the dollar sign, mark it with an @ and exit (you've gotten to the end)
+2. If position has no neighbors with # or $, mark it with a . and exit (this was unsuccessful)
+3. Try running the helper algorithm for all neighbors with a # or $
+4. If one of these calls is successful, mark the current position with an @ and exit.
+5. If none are successful, mark the current position with a . and exit.
