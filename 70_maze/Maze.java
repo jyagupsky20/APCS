@@ -2,24 +2,42 @@
 // APCS pd7
 // HW70 -- Thinkers of the Corn
 //2022-03-4
-//time spent: hr
+//time spent: 0.5 hr
 
 /***
  * class MazeSolver
  * Implements a blind depth-first exit-finding algorithm.
  * Displays probing in terminal.
- * 
- * USAGE: 
+ *
+ * USAGE:
  * $ java Maze [path/to/mazefile]
  * (mazefile is ASCII representation of a maze, using symbols below)
  *
  * ALGORITHM for finding exit from starting position:
- *  <INSERT YOUR SUMMARY OF ALGO HERE>
+ * 1. If the maze is solved, exit the algorithm.
+ * 2. If the hero's position is the end, the maze is solved. Exit the algorithm.
+ * 3. Mark the hero's position with an @ sign.
+ * 4. If the square above is a valid path or the exit, try solving the maze starting there.
+ * 5. If the square to the right is a valid path or the exit, try solving the maze starting there.
+ * 6. If the square below is a valid path or the exit, try solving the maze starting there.
+ * 7. If the square to the left is a valid path or the exit, try solving the maze starting there.
+ * 8. If none of those moves were successful, mark this square with a period and exit the algorithm.
  *
  * DISCO
- * 
+ *
+ * System.exit(0) forces java to stop whatever it's doing and end. Do not confuse it with return;
+ * which only exits the current level of the algorithm.
+ *
+ * Be sure to trace through the algorithm with a test case on paper to find issues with your approach.
+ *
+ * You can put two classes in the same file!
+ *
  * QCC
- * 
+ *
+ * What does the 0 in System.exit(0) represent? What happens if we replace it with something else?
+ *
+ * Can we convert our maze-solving algorithm into an algorithm which finds the shortest possible path?
+ *
  ***/
 
 //enable file I/O
@@ -130,38 +148,38 @@ class MazeSolver
 
     //primary base case
     if (_solved) {
-	return;
+	    return;
     }
     //other base cases
-    else if ( _maze[x][y] == '$') {
-	_solved = true;	
+    else if ( _maze[x][y] == EXIT) {
+	    _solved = true;
       return;
     }
     //otherwise, recursively solve maze from next pos over,
     //after marking current location
     else {
-	_maze[x][y] = '@';
+	    _maze[x][y] = HERO;
       System.out.println( this ); //refresh screen
-      if (_maze[x][y-1] == '#' || _maze[x][y-1] == '$'){
+      if (_maze[x][y-1] == PATH || _maze[x][y-1] == EXIT){
         solve(x,y-1);
       }
-      if (_maze[x+1][y] == '#' || _maze[x+1][y] == '$'){
+      if (_maze[x+1][y] == PATH || _maze[x+1][y] == EXIT){
         solve(x+1,y);
       }
-      if (_maze[x][y+1] == '#' || _maze[x][y+1] == '$'){
+      if (_maze[x][y+1] == PATH || _maze[x][y+1] == EXIT){
         solve(x,y+1);
       }
-      if (_maze[x-1][y] == '#' || _maze[x-1][y] == '$'){
+      if (_maze[x-1][y] == PATH || _maze[x-1][y] == EXIT){
         solve(x-1,y);
       }
-      _maze[x][y] = '.';
+      _maze[x][y] = VISITED_PATH;
       System.out.println( this ); //refresh screen
     }
   }
 
   //accessor method to help with randomized drop-in location
   public boolean onPath( int x, int y) {
-      return _maze[x][y] == '#';
+      return _maze[x][y] == PATH;
   }
   public int height() {
       return h;
