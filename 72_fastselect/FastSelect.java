@@ -97,5 +97,11 @@ public class FastSelect{
     for (int i = 1; i <= arr.length; i++) {
       System.out.println(fastSelect(arr,i)); //Should print out the elements of the array from least to greatest.
     }
+    //Best case scenario:
+    int[] arr2 = {1,2,3,5,8,13,21,34,55,89};
+    System.out.println(fastSelect(arr2, 3));
+    //Worst case scenario:
+    int[] arr3 = {89,55,34,21,13,8,5,3,2,1};
+    System.out.println(fastSelect(arr3, 3));
   }
 }
