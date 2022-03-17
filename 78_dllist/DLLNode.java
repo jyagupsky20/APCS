@@ -2,11 +2,11 @@
 //APCS pd7
 //HW78 --  Doubly Linked List
 //2022-03-16
-//time spent:
+//time spent: 0.25 hr
 
 
 /***
- * class LLNode
+ * class DLLNode
  * Implements a node, for use in lists and other container classes.
  * Stores its data as a String
  **/
@@ -19,11 +19,17 @@ public class DLLNode
   private DLLNode _prevNode;
 
   // constructor
-  public LLNode(DLLNode prev, String value, DLLNode next)
+  public DLLNode(DLLNode prev, String value, DLLNode next)
   {
     _prevNode = prev;
     _cargo = value;
     _nextNode = next;
+    if(_prevNode != null){
+      _prevNode.setNext(this);
+    }
+    if(_nextNode != null){
+      _nextNode.setPrev(this);
+    }
   }
 
 
@@ -53,10 +59,22 @@ public class DLLNode
     return foo;
   }
 
-  public LLNode setNext( LLNode newNext )
+  public DLLNode setNext( DLLNode newNext )
   {
-    LLNode foo = getNext();
+    DLLNode foo = getNext();
     _nextNode = newNext;
+    if(_nextNode != null && _nextNode.getPrev() != this){
+      _nextNode.setPrev(this);
+    }
+    return foo;
+  }
+  public DLLNode setPrev( DLLNode newPrev )
+  {
+    DLLNode foo = getPrev();
+    _prevNode = newPrev;
+    if(_prevNode != null && _prevNode.getNext() != this){
+      _prevNode.setNext(this);
+    }
     return foo;
   }
   //--------------^  MUTATORS  ^--------------
@@ -69,4 +87,4 @@ public class DLLNode
   }
 
 
-}//end class LLNode
+}//end class DLLNode

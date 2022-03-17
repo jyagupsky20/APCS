@@ -1,33 +1,32 @@
-//Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
+// Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
 //APCS pd7
-//HW77 -- Insert|Remove
-//2022-03-15
-//time spent: 0.25hr
+//HW78 --  Doubly Linked List
+//2022-03-16
+//time spent: 0.25 hr
+
+
 /*
 DISCO:
 
 QCC:
 
 ALGO ADD:
-1. If you are adding an item to the beginning, set the head to a new node which contains the desired value and points to the old head. Exit.
-2. Otherwise, created a node called insert which contains the desired value and points to zero.
+1. If you are adding an item to the beginning, set the head to a new node which contains the desired value and whose next node is the old head. Exit.
+2. Otherwise, created a node called insert which contains the desired value and points to null in both directions.
 3. Let the node temp equal the head. Repeatedly set temp to its next node until you reach the node right before the desired index.
-4. Make the insert node point to the node right after temp, and make temp point to insert. Exit.
+4. Make the insert node's next node be the node right after temp, and make temp's next node be insert. Exit.
 ALGO REM:
 1. If removing a node at the beginning of the List, simply set the _head to the next node.
 2. Otherwise, iterate through List until you reach the index before the index of the node you want to remove. Set Node temp equal to the node at that position.
-3. Set this node to point to the node after the next node. 
+3. Set this node's next node be the next node's next node. 
 */
-/***
-* class LList
-* Implements a linked list of LLNodes, each containing String data
-**/
 
 public class LList implements List //interface def must be in this dir
 {
 
   //instance vars
-  private LLNode _head;
+  private DLLNode _head;
+  private DLLNode _tail;
   private int _size;
 
   // constructor -- initializes instance vars
@@ -35,6 +34,7 @@ public class LList implements List //interface def must be in this dir
   {
     _size = 0;
     _head = null;
+    _tail = null;
   }
 
 
@@ -42,8 +42,11 @@ public class LList implements List //interface def must be in this dir
 
   public boolean add( String newVal )
   {
-    _head = new LLNode(newVal, _head);
+    _head = new DLLNode(null, newVal, _head);
     _size++;
+    if (_size == 1) {
+      _tail = _head;
+    }
     return true;
   }
 
@@ -55,12 +58,12 @@ public class LList implements List //interface def must be in this dir
       this.add(newVal);
     }
     else{
-      LLNode insert = new LLNode(newVal, null); //Node we are adding
-      LLNode temp = _head; //Node right before addition
+      DLLNode insert = new DLLNode(null,newVal, null); //Node we are adding
+      DLLNode temp = _head; //Node right before addition
       for (int i = 0; i < index-1; i++) {
         temp = temp.getNext();
       }
-      LLNode next = temp.getNext(); //Node right after addition
+      DLLNode next = temp.getNext(); //Node right after addition
       //Insert the new node
       insert.setNext(next);
       temp.setNext(insert);
@@ -78,7 +81,7 @@ public class LList implements List //interface def must be in this dir
       _head = _head.getNext();
     }
     else{
-      LLNode beforeRemove = _head;
+      DLLNode beforeRemove = _head;
       for ( int i = 0; i < index-1; i++){
         beforeRemove = beforeRemove.getNext();
       }
@@ -94,7 +97,7 @@ public class LList implements List //interface def must be in this dir
     if ( index < 0 || index >= size() ){
       throw new IndexOutOfBoundsException();
     }
-    LLNode temp = this._head;
+    DLLNode temp = this._head;
     for (int i = 0; i < index; i++){
       temp = temp.getNext();
     }
@@ -108,7 +111,7 @@ public class LList implements List //interface def must be in this dir
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
 
-    LLNode temp = this._head;
+    DLLNode temp = this._head;
     for (int i = 0; i < index; i++){
       temp = temp.getNext();
     }
@@ -131,7 +134,7 @@ public class LList implements List //interface def must be in this dir
   public String toString()
   {
     String out = "[";
-    for(LLNode temp = _head; temp != null; temp = temp.getNext()){
+    for(DLLNode temp = _head; temp != null; temp = temp.getNext()){
       out += temp.getCargo();
       if(temp.getNext() != null){
         out += ",";
