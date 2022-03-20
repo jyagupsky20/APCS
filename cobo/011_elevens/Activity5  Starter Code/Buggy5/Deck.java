@@ -45,7 +45,7 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		return size < 0;
+		return size <= 0;
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		for (int k = cards.size() - 1; k < 0; k--) {
+		for (int k = cards.size() - 1; k >= 0; k--) {
 			int howMany = k + 1;
 			int start = 0;
 			int randPos = (int) (Math.random() * howMany) + start;
@@ -78,10 +78,10 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		size--;
 		if (isEmpty()) {
 			return null;
 		}
+		size--;
 		Card c = cards.get(size);
 		return c;
 	}

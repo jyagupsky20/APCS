@@ -8,12 +8,28 @@ public class DeckTester {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		String[] s1 = {"Ace","Queen","King","Jack","10","9","8","7","6","5","4","3","2"};
-		Deck spades = new Deck(s1, {"Spades","Spades","Spades","Spades","Spades","Spades","Spades","Spades","Spades","Spades","Spades","Spades","Spades"}, {14,13,12,11,10,9,8,7,6,5,4,3,2});\
-		Deck aces = new Deck({"Ace","Ace","Ace","Ace"}, {"Spades","Diamonds","Clubs","Hearts"}, {14,14,14,14});
-		Deck royalFlush new Deck({"Ace","Queen","King","Jack","10"}, {"Spades","Spades","Spades","Spades","Spades"}, {14,13,12,11,10});
-		System.out.println(spades);
-		System.out.println(aces);
-		System.out.println(royalFlush);
+		String[] allSuits = {"Hearts", "Clubs", "Diamonds", "Spades"};
+		String[] spadeSuits = {"Spades"};
+		String[] allCards = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+		String[] broadwayCards = {"Ten", "Jack", "Queen", "King", "Ace"};
+		int[] allValues = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+		int[] broadwayValues = {10,11,12,13,14};
+		Deck fullDeck = new Deck(allCards, allSuits, allValues);
+		Deck spadeRoyalFlush = new Deck(broadwayCards, spadeSuits, broadwayValues);
+		System.out.println("–––––––STARTING DECKS–––––––")
+		System.out.println(fullDeck);
+		System.out.println(spadeRoyalFlush);
+		System.out.println("–––––––DEALING ROYAL FLUSH–––––––")
+		while(!spadeRoyalFlush.isEmpty()){
+			System.out.println(spadeRoyalFlush.deal());
+		}
+		System.out.println("–––––––END ROYAL FLUSH–––––––")
+		System.out.println(spadeRoyalFlush);
+		System.out.println("–––––––DEALING FULL DECK–––––––")
+		while(!fullDeck.isEmpty()){
+			System.out.println(fullDeck.deal());
+		}
+		System.out.println("–––––––END FULL DECK–––––––")
+		System.out.println(fullDeck);
 	}
 }

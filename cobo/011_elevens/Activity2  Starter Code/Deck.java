@@ -30,9 +30,11 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-	//we did this wrong, fix it! Should be all possibilities
-		for(int i = 0; i < ranks.length; i++){
-			cards.add(new Card(ranks[i],suits[i],values[i]));
+		cards = new ArrayList<Card>();
+		for (int i = 0; i < ranks.length; i++) {
+			for (String suit : suits) {
+				cards.add(new Card(ranks[i],suit, values[i]));
+			}
 		}
 		size = cards.size();
 	}
@@ -43,7 +45,7 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		return cards.size() == 0;
+		return size <= 0;
 	}
 
 	/**
@@ -68,8 +70,13 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		size--;
-		return cards.get(size+1);
+		if(!this.isEmpty()){
+			size--;
+			return cards.get(size);
+		}
+		else{
+			return null;
+		}
 	}
 
 	/**
