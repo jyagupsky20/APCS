@@ -1,4 +1,4 @@
-Team Something Important Minus One: Joshua Yagupsky, Jonathan Song
+*Team Something Important Minus One: Joshua Yagupsky, Jonathan Song
 APCS pd7
 L07 --  Card Game
 2022-03-20
