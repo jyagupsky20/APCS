@@ -2,7 +2,13 @@ Team Something Important Minus One: Joshua Yagupsky, Jonathan Song
 APCS pd7
 L07 --  Card Game
 2022-03-20
-time spent: hr
+time spent: 3.5 hr
+
+DISCO:
+You can create abstract methods, which will be present in any subclass but whose functionality you do not need to create, in abstract classes.
+Abstract classes provide the functionality of a regular superclass with the abstractness of an interface.
+QCC:
+Are there any guidelines on when to use an interface versus an abstract class?
 
 ACTIVITY 2 QUESTIONS:
 1. A deck encapsulates an ArrayList of Cards. It doesn't allow you to directly interface with the underlying ArrayList, but it does give limited access through methods like deal().
@@ -49,3 +55,67 @@ Buggy5:
 isEmpty: We replaced less than with less than or equal to
 shuffle: k should be greater than or equal to 0, not less than 0
 deal: size-- moved to after the if statement
+
+ACTIVITY 6 QUESTIONS:
+1. From the start, you can remove the 6 and either 5.
+2. In order to end up with 3 cards remaining at the end, you can't just remove pairs. This is because you start with 52 cards, which is an even number.
+You must remove an odd amount of JQK triples to end up with three cards left. If you just remove 1 triple and remove all possible pairs, you will have 9 cards remaining: three jacks, three queens, and three kings. From there, you can remove 2 more, and you'll end up with JQK.
+Thus, if your game ends in three cards, they must be a triple of JQK.
+3. The game is entirely a game of chance, since you have no control over if the cards that replace the ones you discard will link up with the cards already on the board. You can increase your chances by removing JQK triples, since these reveal more cards.
+
+ACTIVITY 7 QUESTIONS:
+1. You would need a deck of 52 cards, a "discard pile" containing the cards you've thrown out, and the collection of nine cards on the "board".
+The instance variables are likely a Deck, from which we can draw cards, and a Card[] of size 9 to represent the current board.
+2.
+First, prepare the deck and deal 9 cards into the board. Give the player all possible options of which cards they can remove. Remove the cards in the selection the player chooses, and deal cards from the deck to replace them. Repeat until no more moves are possible (a loss), or there are no more cards in the deck (a win).
+3.
+Although some of the methods are not implemented yet, the structure seems correct.
+4.
+a. In the constructor and in the newGame method
+b. isLegal() and anotherPlayIsPossible()
+c.
+cards = {jH, 6C, null, 2S, null, null, AS, 4H, null}
+selected = {}
+k=0
+not null: selected = {0}
+k=1
+not null: selected = {0,1}
+k=2
+null
+k=3
+not null: selected = {0,1,3}
+k=4
+null
+k=5
+null
+k=6
+not null: selected = {0,1,3,6}
+k=7
+not null: selected = {0,1,3,6,7}
+k=8
+null
+
+selected = {0,1,3,6,7}
+
+d.
+for(Integer position : cIndexes){
+  System.out.print(cards.get(position))
+}
+e. isLegal() needs to call cardIndexes(), since the player can only remove cards that are not null.
+
+ACTIVITY 8 QUESTIONS:
+1. All of these games follow the same format with a board of a certain size, and the player being allowed to remove pairs of cards that add to a certain number.
+Each game has its own unique rule about what other kinds of cards can be removed, such as a JQK triple in Elevens, singleton kings in Thirteens, etc.
+Each game also has a different sized board.
+2. ElevensBoard's constructor calls the constructor for Board with the same ranks, suits, and point values that the ElevensBoard constructor receives, but the board size is hardcoded to 9.
+3. There isn't a containsPairSumN method or something like that, which would capture the fact that Tens, Elevens, and Thirteens all allow the removal of pairs whose cards add to a specific point value.
+
+ACTIVITY 9 QUESTIONS:
+1. The size method will always return the size instance variable, so it has the same functionality in both games, even if it gives different results.
+2. The method functions the same regardless of which version of the game we are playing.
+3. While we could call the methods polymorphically, we wouldn't be able to actually put any code into the interface. Abstract classes do allow us to write actual functionality, which makes them more useful in this case.
+
+ACTIVITY 11 QUESTIONS:
+1. The percentages ranged from 0 to 30 percent, with very wild swings.
+2. The percentages seemed to stay around 11 or 12 percent, but got as low as 9 and as high as 16.
+3. At 10k games, the percentages were pretty much always around 10.7%.
