@@ -50,7 +50,15 @@ public static boolean arePermutations(int[] arr1, int[] arr2){
 0,1,1,0
 
 ACTIVITY 5 QUESTIONS:
-Note: Buggy1 through Buggy4 had no deck file for us to test
+Buggy1:
+isEmpty is leading to an error, which says that it's false for an empty deck. isEmpty should just return true if the size variable is less than or equal to zero.
+Buggy2:
+This one says that size is 0, but should be 1 for a deck with one card. The programmer probably forgot to set the size in the constructor to the total number of cards.
+Buggy3:
+This one says that the cards aren't being shuffled, as after every shuffle, the sequence of cards is the same. Perhaps the programmer tried to implement a perfect shuffle,
+but simply added the cards in the sequence they were originally in.
+Buggy4:
+This one says that the deck is dealing a null card. This is likely an error in the size variable, which the programmer may have accidentally incremented.
 Buggy5:
 isEmpty: We replaced less than with less than or equal to
 shuffle: k should be greater than or equal to 0, not less than 0
