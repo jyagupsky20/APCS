@@ -3,11 +3,11 @@
  * Implements a linked list of DLLNodes, each containing String data
  **/
 
-public class LList implements List //your List.java must be in same dir
+public class LList<T> implements List<T> //your List.java must be in same dir
 {
 
   //instance vars
-  private DLLNode _head, _tail; //pointers to first and last nodes
+  private DLLNode<T> _head, _tail; //pointers to first and last nodes
   private int _size;
 
   // constructor -- initializes instance vars
@@ -21,7 +21,7 @@ public class LList implements List //your List.java must be in same dir
   //--------------v  List interface methods  v--------------
 
   //add a node to end of list
-  public boolean add( String newVal )
+  public boolean add( T newVal )
   {
     addLast( newVal );
     return true; //per Java API spec
@@ -29,7 +29,7 @@ public class LList implements List //your List.java must be in same dir
 
 
   //insert a node containing newVal at position index
-  public void add( int index, String newVal )
+  public void add( int index, T newVal )
   {
     if ( index < 0 || index > size() )
       throw new IndexOutOfBoundsException();
@@ -37,20 +37,20 @@ public class LList implements List //your List.java must be in same dir
     else if ( index == size() )
       addLast( newVal );
 
-    DLLNode newNode = new DLLNode( newVal, null, null );
+    DLLNode<T> newNode = new DLLNode<T>( newVal, null, null );
 
     //if index==0, insert node before head node
     if ( index == 0 )
       addFirst( newVal );
     else {
-      DLLNode tmp1 = _head; //create alias to head
+      DLLNode<T> tmp1 = _head; //create alias to head
 
       //walk tmp1 to node before desired node
       for( int i=0; i < index-1; i++ )
         tmp1 = tmp1.getNext();
 
       //init a pointer to node at insertion index
-      DLLNode tmp2 = tmp1.getNext(); 
+      DLLNode<T> tmp2 = tmp1.getNext(); 
 
       //insert new node
       newNode.setNext( tmp2 );
@@ -65,7 +65,7 @@ public class LList implements List //your List.java must be in same dir
 
 
   //remove node at pos index, return its cargo
-  public String remove( int index )
+  public T remove( int index )
   {
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
@@ -75,7 +75,7 @@ public class LList implements List //your List.java must be in same dir
     else if ( index == size()-1 )
       return removeLast();
     else {
-      DLLNode tmp1 = _head; //create alias to head
+      DLLNode<T> tmp1 = _head; //create alias to head
 
       //walk to node before desired node
       for( int i=0; i < index-1; i++ ) {
@@ -83,7 +83,7 @@ public class LList implements List //your List.java must be in same dir
         System.out.println( "tmp1: " + tmp1.getCargo() );
       }
       //check target node's cargo hold
-      String retVal = tmp1.getNext().getCargo();
+      T retVal = tmp1.getNext().getCargo();
 
       //remove target node
       tmp1.setNext( tmp1.getNext().getNext() );
@@ -97,13 +97,13 @@ public class LList implements List //your List.java must be in same dir
   }
 
 
-  public String get( int index )
+  public T get( int index )
   {
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
 
-    String retVal;
-    DLLNode tmp = _head; //create alias to head
+    T retVal;
+    DLLNode<T> tmp = _head; //create alias to head
 
     //walk to desired node
     for( int i=0; i < index; i++ )
@@ -115,19 +115,19 @@ public class LList implements List //your List.java must be in same dir
   }
 
 
-  public String set( int index, String newVal )
+  public T set( int index, T newVal )
   {
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
 
-    DLLNode tmp = _head; //create alias to head
+    DLLNode<T> tmp = _head; //create alias to head
 
     //walk to desired node
     for( int i=0; i < index; i++ )
       tmp = tmp.getNext();
 
     //store target node's cargo
-    String oldVal = tmp.getCargo();
+    T oldVal = tmp.getCargo();
 
     //modify target node's cargo
     tmp.setCargo( newVal );
@@ -144,10 +144,10 @@ public class LList implements List //your List.java must be in same dir
 
   //--------------v  Helper methods  v--------------
 
-  public void addFirst( String newFirstVal )
+  public void addFirst( T newFirstVal )
   {
     //insert new node before first node (prev=null, next=_head)
-    _head = new DLLNode( newFirstVal, null, _head );
+    _head = new DLLNode<T>( newFirstVal, null, _head );
 
     if ( _size == 0 )
       _tail = _head;
@@ -157,10 +157,10 @@ public class LList implements List //your List.java must be in same dir
   }
 
 
-  public void addLast( String newLastVal )
+  public void addLast( T newLastVal )
   {
     //insert new node after last node (prev=_last, next=null)
-    _tail = new DLLNode( newLastVal, _tail, null );
+    _tail = new DLLNode<T>( newLastVal, _tail, null );
 
     if ( _size == 0 )
       _head = _tail;
@@ -170,14 +170,14 @@ public class LList implements List //your List.java must be in same dir
   }
 
 
-  public String getFirst() { return _head.getCargo(); }
+  public T getFirst() { return _head.getCargo(); }
 
-  public String getLast() { return _tail.getCargo(); }
+  public T getLast() { return _tail.getCargo(); }
 
 
-  public String removeFirst()
+  public T removeFirst()
   {
-    String retVal = getFirst();
+    T retVal = getFirst();
     if ( size() == 1 ) {
       _head = _tail = null;
     }
@@ -189,9 +189,9 @@ public class LList implements List //your List.java must be in same dir
     return retVal;
   }
 
-  public String removeLast()
+  public T removeLast()
   {
-    String retVal = getLast();
+    T retVal = getLast();
     if ( size() == 1 ) {
       _head = _tail = null;
     }
@@ -209,7 +209,7 @@ public class LList implements List //your List.java must be in same dir
   public String toString()
   {
     String retStr = "HEAD->";
-    DLLNode tmp = _head; //init tr
+    DLLNode<T> tmp = _head; //init tr
     while( tmp != null ) {
       retStr += tmp.getCargo() + "->";
       tmp = tmp.getNext();
@@ -222,7 +222,7 @@ public class LList implements List //your List.java must be in same dir
   //main method for testing
   public static void main( String[] args )
   {
-    LList james = new LList();
+    LList<String> james = new LList<String>();
 
     System.out.println("initially: " );
     System.out.println( james + "\tsize: " + james.size() );

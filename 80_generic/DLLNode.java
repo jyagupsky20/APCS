@@ -4,14 +4,14 @@
  * Stores a String as cargo.
  **/
 
-public class DLLNode
+public class DLLNode<T>
 {
-  private String _cargo;    //cargo may only be of type String
-  private DLLNode _nextNode, _prevNode; //pointers to next, prev DLLNodes
+  private T _cargo;    //cargo may only be of type String
+  private DLLNode<T> _nextNode, _prevNode; //pointers to next, prev DLLNodes
 
 
   // constructor -- initializes instance vars
-  public DLLNode( String value, DLLNode prev, DLLNode next )
+  public DLLNode( T value, DLLNode prev, DLLNode next )
   {
     _cargo = value;
     _nextNode = next;
@@ -20,30 +20,30 @@ public class DLLNode
 
 
   //--------------v  ACCESSORS  v--------------
-  public String getCargo() { return _cargo; }
+  public T getCargo() { return _cargo; }
 
-  public DLLNode getNext() { return _nextNode; }
+  public DLLNode<T> getNext() { return _nextNode; }
 
-  public DLLNode getPrev() { return _prevNode; }
+  public DLLNode<T> getPrev() { return _prevNode; }
   //--------------^  ACCESSORS  ^--------------
 
 
   //--------------v  MUTATORS  v--------------
-  public String setCargo( String newCargo )
+  public T setCargo( T newCargo )
   {
-    String foo = getCargo();
+    T foo = getCargo();
     _cargo = newCargo;
     return foo;
   }
 
-  public DLLNode setNext( DLLNode newNext )
+  public DLLNode<T> setNext( DLLNode<T> newNext )
   {
-    DLLNode foo = getNext();
+    DLLNode<T> foo = getNext();
     _nextNode = newNext;
     return foo;
   }
 
-  public DLLNode setPrev( DLLNode newPrev )
+  public DLLNode<T> setPrev( DLLNode<T> newPrev )
   {
     DLLNode foo = getPrev();
     _prevNode = newPrev;

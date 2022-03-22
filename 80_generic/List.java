@@ -11,22 +11,22 @@
  * ADD-AT-INDEX
  **/
 
-public interface List
+public interface List<T>
 {
   //add node to list, containing input String as its data
-  public boolean add( String x );
+  public boolean add( T x );
 
   //insert at specified index
-  public void add( int index, String newVal );
+  public void add( int index, T newVal );
 
   //remove node from list, return its data
-  public String remove( int index );
+  public T remove( int index );
 
   //return data in element at position i
-  public String get( int i );
+  public T get( int i );
 
   //overwrite data in element at position i
-  public String set( int i, String x );
+  public T set( int i, T x );
 
   //return length of list
   public int size();
