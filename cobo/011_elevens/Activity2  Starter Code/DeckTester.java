@@ -22,20 +22,20 @@ public class DeckTester {
 		int[] broadwayValues = {10,11,12,13,14};
 		Deck fullDeck = new Deck(allCards, allSuits, allValues);
 		Deck spadeRoyalFlush = new Deck(broadwayCards, spadeSuits, broadwayValues);
-		System.out.println("–––––––STARTING DECKS–––––––")
+		System.out.println("–––––––STARTING DECKS–––––––");
 		System.out.println(fullDeck);
 		System.out.println(spadeRoyalFlush);
-		System.out.println("–––––––DEALING ROYAL FLUSH–––––––")
+		System.out.println("–––––––DEALING ROYAL FLUSH–––––––");
 		while(!spadeRoyalFlush.isEmpty()){
 			System.out.println(spadeRoyalFlush.deal());
 		}
-		System.out.println("–––––––END ROYAL FLUSH–––––––")
+		System.out.println("–––––––END ROYAL FLUSH–––––––");
 		System.out.println(spadeRoyalFlush);
-		System.out.println("–––––––DEALING FULL DECK–––––––")
+		System.out.println("–––––––DEALING FULL DECK–––––––");
 		while(!fullDeck.isEmpty()){
 			System.out.println(fullDeck.deal());
 		}
-		System.out.println("–––––––END FULL DECK–––––––")
+		System.out.println("–––––––END FULL DECK–––––––");
 		System.out.println(fullDeck);
 	}
 }
