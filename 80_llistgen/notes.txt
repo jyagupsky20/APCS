@@ -1,0 +1,14 @@
+Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
+APCS pd7
+HW80 -- Generically Speaking
+2022-03-23
+time spent: 0.2 hr
+
+TIPS:
+Be sure everything generic has the same type. In our LList file, we replaced every instance of DLLNode with
+DLLNode<T>
+DISCO:
+
+QCC:
+* Besides using wrapper classes, is there any way to use a primitive type as an argument for a generic?
+* Can you have methods that use generic parameters without the class using a generic parameter?

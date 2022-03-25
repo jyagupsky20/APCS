@@ -6,7 +6,7 @@
 
 public class DLLNode<T>
 {
-  private T _cargo;    //cargo may only be of type String
+  private T _cargo;
   private DLLNode<T> _nextNode, _prevNode; //pointers to next, prev DLLNodes
 
 
@@ -71,7 +71,7 @@ public class DLLNode<T>
     //Create a third node after the second
     first.getNext().setNext( new DLLNode( "cow", null ) );
 
-    DLLNode temp = first; 
+    DLLNode temp = first;
     while( temp != null ) {
       System.out.println( temp );
       temp = temp.getNext();
