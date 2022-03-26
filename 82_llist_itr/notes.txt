@@ -1,0 +1,16 @@
+Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
+APCS pd7
+HW82 -- Roll Your Own Iterator
+2022-03-26
+time spent: 0.5 hr
+
+We first made a private, non-static class inside the LList class that contained the features we would want from an iterator that works with a doubly linked list.
+This class implemented the Iterator<T> interface. We wanted it private so that users of LList couldn't accidentally access it, and we wanted it non static
+so that it worked with each instance of LList, and not the class as a whole. We then made a public iterator() which returned a new instance of this class.
+
+DISCO:
+* You can have classes inside other classes, which can see the private members of the outside class.
+
+QCC:
+* Can static nested classes access static members of the outer class?
+* What exactly does package-private do?
