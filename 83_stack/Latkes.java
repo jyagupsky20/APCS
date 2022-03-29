@@ -1,4 +1,9 @@
 /***
+ * Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
+ * APCS pd7
+ * HW83 -- Stacks on Stacks
+ * 2022-03-28
+ * time spent: 0.2 hr
  * class Latkes
  * v1
  * SKELETON
@@ -6,9 +11,9 @@
  **/
 
 /***
-    DISCO
-
-    QCC
+  DISCO:
+  The _stackSize variable tracks the first "junk" element of the internal array, i.e, the first element we can safely overwrite.
+  QCC:
 
  **/
 
@@ -16,73 +21,58 @@
 public class Latkes
 {
   private String [] _stack;
-  private int _stackSize;
+  private int _stackSize;//Stack size represents the index of the first unused item
 
 
   //constructor
   public Latkes( int initCapacity )
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
-  }// O(?)
+    _stack = new String[initCapacity];
+    _stackSize = 0;
+  }// O(1)
 
 
   //means of insertion
   public void push( String s )
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
-  }// O(?)
+    if (!isFull()) {
+      _stack[_stackSize] = s;
+      _stackSize++;
+    }
+  }// O(1)
 
 
   //means of removal
   public String pop( )
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
-  }// O(?)
+    if(!isEmpty()){
+      _stackSize--;
+      return _stack[_stackSize];
+    }
+    return null;
+  }// O(1)
 
 
   //chk for emptiness
   public boolean isEmpty()
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
-  }// O(?)
+    return _stackSize <= 0;
+  }// O(1)
 
 
   //chk for fullness
   public boolean isFull()
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
-  }// O(?)
+    return _stackSize >= _stack.length;
+  }// O(1)
 
 
   //main method for testing
   public static void main( String[] args )
   {
-    /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
+    Latkes testCase = new Latkes(1);
+    testCase.push("thing");
+    System.out.println(testCase.pop());
 
     Latkes tastyStack = new Latkes(10);
 
@@ -126,8 +116,6 @@ public class Latkes
 
     //stack empty by now; SOP(null)
     System.out.println( tastyStack.pop() );
-      ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
-
   }//end main()
 
 }//end class Latkes
