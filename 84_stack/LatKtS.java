@@ -1,9 +1,24 @@
 /***
+ * Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
+ * APCS pd7
+ * HW84 -- Stack: What Is It Good For?
+ * 2022-03-28
+ * time spent: 0.2 hr
+***/
+
+/***
  * class LatKtS
  * SKELETON
  * driver class for Latkes
  * Uses a stack to reverse a text string, check for sets of matching parens.
- **/
+***/
+
+/*
+DISCO:
+ * It's very important to check if a stack is empty/full. You might end up with some unintended behavior if you forget.
+QCC:
+ * Do the test cases take care of all possible scenarios for allMatched?
+*/
 
 public class LatKtS
 {
