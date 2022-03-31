@@ -1,0 +1,14 @@
+Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
+APCS pd7
+HW85 -- Leon Leonwood Stack
+2022-03-30
+time spent: 0.3 hr
+
+DISCO:
+* LinkedLists appears to be better suited to stacks than ArrayLists, since they come with addLast, getLast, and removeLast methods.
+ArrayLists lack this nice behavior
+QCC:
+* Are there any major differences in runtime between a stack that uses ArrayLists as opposed to LinkedLists?
+* Do actual stacks tend to use ArrayLists, LinkedLists, or arrays?
+
+It doesn't matter what you call the parameter for a generic type, but T is very useful and readable.
