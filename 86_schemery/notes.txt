@@ -1,0 +1,31 @@
+/*
+Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
+APCS pd7
+HW86 -- What a Racket
+2022-03-31
+time spent: 1 hr
+*/
+/***
+ * class Scheme
+ * Simulates a rudimentary Scheme interpreter
+ *
+ * ALGORITHM for EVALUATING A SCHEME EXPRESSION:
+ *   1. Use regex to split your string into an array of tokens.
+ *   2. Keep adding tokens to your main stack until you hit a closing bracket.
+ *   3. Pop off tokens onto the secondary stack until you see an operation. Record the operation and pop it and the opening bracket off.
+ *   4. Unload the second stack using the recorded operation.
+ *   5. Push the result of the second stack evaluation to the main stack.
+ *   6. After all of the tokens have been pushed and evaluated, return the peekTop of the main stack.
+ * ALGORITHM for UNLOADING:
+ *   1. Set the running total to the pop of the given stack.
+ *   2. Set the current character to the empty string.
+ *   3. Pop tokens off the stack. If they are numeric, add/subtract/multiply them to the running total
+ *   4. If you hit a closing parenthesis, stop. Return the runningTotal
+ * STACK OF CHOICE: LLStack by Team Something Important
+ * b/c We can use LLStack's quick push, peek, and pop operations
+ **/
+
+DISCO:
+Switch statements are weird, if and else do the job just fine (most of the time was spent debugging the switch statement...)
+QCC:
+What are the major differences between switch statements and if else statements? 
