@@ -1,3 +1,14 @@
+/*
+Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
+APCS pd7
+HW88 -- BPC Kiddies Do Not Wait in Line Either
+2022-04-4
+time spent: 0.5 hr
+DISCO:
+
+QCC:
+What would be a use for an RQueue?
+*/
 /***
  * class RQueue
  * SKELETON
@@ -30,48 +41,72 @@ public class RQueue<T> implements Queue<T>
     _size = 0;
   }
 
-//This is the random one!
+  //This is the random one!
   public void enqueue( T enQVal )
   {
-    
-  }//O(?)
+    _size++;
+    if (isEmpty()){
+      _front = new LLNode<T>(enQVal, null);
+      _end = _front;
+      return;
+    }
+    LLNode<T> tracker = _front;
+    int pos = (int) ((this._size-1) * Math.random());
+    for (int i = 0; i < pos; i++){
+      tracker = tracker.getNext();
+    }
+    LLNode<T> next = tracker.getNext();
+    tracker.setNext(new LLNode<T>(enQVal, next));
+  }//O(n)
 
 
   // remove and return thing at front of queue
   // assume _queue ! empty
   public T dequeue()
   {
-
-  }//O(?)
+    if (isEmpty()){return null;}
+    T ret = _front.getCargo();
+    _front = _front.getNext();
+    _size--;
+    return ret;
+  }//O(1)
 
 
   public T peekFront()
   {
-
-  }//O(?)
+    return _front.getCargo();
+  }//O(1)
 
 
   /***
    * void sample() -- a means of "shuffling" the queue
    * Algo:
-   *   < YOUR SUCCINCT SUMMARY HERE >
+   *   Dequeue an element and enqueue it randomly. This should be done at least _size times
    **/
   public void sample ()
   {
-
-  }//O(?)
+    T val;
+    for (int i = 0; i< _size; i++){
+      val = dequeue();
+      enqueue(val);
+    }
+  }//O(n^2)
 
 
   public boolean isEmpty()
   {
     return _front == null;
-  } //O(?)
+  } //O(1)
 
 
   // print each node, separated by spaces
   public String toString()
   {
-
+    String out = "";
+    for (LLNode<T> i = _front; i != null; i = i.getNext()) {
+      out = i.getCargo() + " " + out;
+    }
+    return out;
   }//end toString()
 
 
@@ -79,12 +114,9 @@ public class RQueue<T> implements Queue<T>
   //main method for testing
   public static void main( String[] args )
   {
+    RQueue<String> PirateQueue = new RQueue<String>();
 
-      /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
-    
-    Queue<String> PirateQueue = new RQueue<String>();
-
-    System.out.println("\nnow enqueuing..."); 
+    System.out.println("\nnow enqueuing...");
     PirateQueue.enqueue("Dread");
     PirateQueue.enqueue("Pirate");
     PirateQueue.enqueue("Roberts");
@@ -92,10 +124,16 @@ public class RQueue<T> implements Queue<T>
     PirateQueue.enqueue("Peter");
     PirateQueue.enqueue("Stuyvesant");
 
-    System.out.println("\nnow testing toString()..."); 
+    System.out.println("\nShuffling 10 times!");
+    for (int i = 0;i< 10 ;i++ ) {
+      PirateQueue.sample();
+      System.out.println(PirateQueue);
+    }
+
+    System.out.println("\nnow testing toString()...");
     System.out.println( PirateQueue ); //for testing toString()...
 
-    System.out.println("\nnow dequeuing..."); 
+    System.out.println("\nnow dequeuing...");
     System.out.println( PirateQueue.dequeue() );
     System.out.println( PirateQueue.dequeue() );
     System.out.println( PirateQueue.dequeue() );
@@ -104,10 +142,8 @@ public class RQueue<T> implements Queue<T>
     System.out.println( PirateQueue.dequeue() );
 
     System.out.println("\nnow dequeuing fr empty queue...\n" +
-                       "(expect NPE)\n"); 
+                       "(expect NPE)\n");
     System.out.println( PirateQueue.dequeue() );
-
-      ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
   }//end main
 
