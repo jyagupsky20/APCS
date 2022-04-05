@@ -1,0 +1,30 @@
+Team Trio of Two :: Joshua Yagupsky, Jonathan Song
+APCS
+LAB08 --
+2022-04-05
+time spent: <elapsed time in hours, rounded to nearest tenth>
+
+
+DISCO
+
+
+QCC
+
+Section 2 Questions:
+
+1. Cereal
+
+2. Lies!
+
+3. public class Cereal
+
+4. 15 instance variables
+
+5. String name, String type, int calories, int protein, int fat, int sodium, double fiber, double carbs, int sugar, int potassium, int vitamins, int shelf, double weight, double cups, double rating
+
+<TNPG>'s CSV FLOW:
+<insert your description of your tools and workflow in creating, editing CSV files>
+
+
+TRUBZ
+<this lab involves using tools that are likely to introduce hiccups; log any troubleshooting issues here>
