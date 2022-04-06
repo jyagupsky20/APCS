@@ -1,13 +1,14 @@
 Team Trio of Two :: Joshua Yagupsky, Jonathan Song
 APCS
-LAB08 --
+LAB08 -- Data
 2022-04-05
-time spent: <elapsed time in hours, rounded to nearest tenth>
-
+time spent: 3.0 hr
 
 DISCO
-
-
+\t is the tab character in regex
+.jar files can contain class files
+The -classpath flag tells java where it can look for class files when compiling
+TSV, or tab separated value files, are usually easier to deal with than CSV, or comma separated value files.
 QCC
 
 Activity 1 Questions:
@@ -41,8 +42,39 @@ Activity 3 Questions:
 7. What is the westernmost weather station?
 8. We would write a getLon() method to return the longitude, and then traverse through the ArrayList to find the westernmost station.
 9. We would need one accessor method and would need to slightly modify our loop for the southernMost station.
+
+Activity 4 Questions:
+1. We wanted to know which Rubik's cube competition was the farthest south. We chose this question because it was relatively easy to implement, but the manner in which
+we programmed it allowed for other sorts of questions to be answered, such as the southern most competition in a particular year.
+2. We used the World Cube Association's competition dataset, which we found on the Database page of their website.
+3. We first created a class that would serve as a record for an individual competition, introducing the fields we thought were the most important. We then processed the file into an ArrayList of these records, and traversed through the ArrayList to find the southern most competition.
+We found out that Southern Scramble Dunedin 2021 in New Zealand took place in 2021 with events 222 333 333bf 333oh 444 555 666 777 clock minx pyram skewb sq1 at location -45907982 170498888.
+4. Our Competition class contained data on the competition name, country, year, events, latitude, and longitude, as these were the easiest to read from the TSV file.
+5. Here was our code segment:
+public static void main(String[] args) {
+  ArrayList<Competition> clist = new ArrayList<Competition>();
+  List<String> currentLine = new ArrayList<String>();
+  Scanner scanner = new Scanner(System.in); //Uses redirection
+  scanner.nextLine(); //Ignores the initial line
+  while (scanner.hasNextLine()){
+    currentLine = Arrays.asList(scanner.nextLine().toString().split("\t"));
+    clist.add(new Competition(currentLine.get(1),currentLine.get(3),Integer.parseInt(currentLine.get(5)),currentLine.get(11), Integer.parseInt(currentLine.get(19)),Integer.parseInt(currentLine.get(20))));
+  }
+  Competition southernMost = clist.get(0);
+  for (Competition c: clist ) {
+    if(c.latitude() < southernMost.latitude()){
+      southernMost = c;
+    }
+  }
+  System.out.println(southernMost);
+}
+
+We have a scanner that reads from System.in, which we redirect at runtime to read from the tsv. We then skip the first line, since it contains unnecessary info.
+For each line, we split on the tab character and add the data to our list of records. We then loop through the list, continually updating the southern most competition.
+
 <Team Trio of Two>'s CSV FLOW:
-Our data on Rubik's cube competitions came as a TSV. We imported this into Excel in order to view all the data at once.
+Our data on Rubik's cube competitions came as a TSV.
+We used a scanner to split each line into its own record. We then split on the tab character \t and picked out the fields of each record we wanted.
 
 TRUBZ
 <this lab involves using tools that are likely to introduce hiccups; log any troubleshooting issues here>
