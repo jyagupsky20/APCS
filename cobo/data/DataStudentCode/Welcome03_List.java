@@ -1,8 +1,8 @@
-Team Trio of Two :: Joshua Yagupsky, Jonathan Song
+/*Team Trio of Two :: Joshua Yagupsky, Jonathan Song
 APCS
 LAB08 -- Data
 2022-04-05
-time spent: 3.0 hr
+time spent: 3.0 hr*/
 
 /*
  * Arrays of objects

@@ -1,16 +1,16 @@
-Team Trio of Two :: Joshua Yagupsky, Jonathan Song
+/*Team Trio of Two :: Joshua Yagupsky, Jonathan Song
 APCS
 LAB08 -- Data
 2022-04-05
-time spent: 3.0 hr
+time spent: 3.0 hr*/
 
 import core.data.*;
 
 public class Welcome01 {
    public static void main(String[] args) {
       String id = "KATL";
-      DataSource ds = DataSource.connect("http://weather.gov/xml/current_obs/" + id + ".xml"); 
-      ds.setCacheTimeout(15 * 60);  
+      DataSource ds = DataSource.connect("http://weather.gov/xml/current_obs/" + id + ".xml");
+      ds.setCacheTimeout(15 * 60);
       ds.load();
       //ds.printUsageString();
       float temp = ds.fetchFloat("temp_f");
