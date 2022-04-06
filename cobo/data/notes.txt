@@ -10,21 +10,39 @@ DISCO
 
 QCC
 
-Section 2 Questions:
+Activity 1 Questions:
+1. Youtube, Twitter, Facebook
+2. Your name, personal preferences based on media viewed,
+3. Delimited means "separated," referring to how a data file needs to separate different types of data for each object into different categories.
+4. You can look through the whole column and see what the objects in that column have in common.
+5. Competitive Rubik's cube solving, video game console history
+6. What Rubik's cube competition has had the most competitors?
+7. For Rubik's cube competitions, the World Cube Association has a database of competitions, which can be found at https://www.worldcubeassociation.org/results/misc/export.html
+8. There are 7806 records, which is beneficial because it means our data is less prone to bias and error.
+9. By knowing your watch history, Youtube can recommend you more videos you will find interesting.
+10. All Rubik's cube competitions are already posted on the WCA website.
+11. So long as Youtube keeps its data on our watch histories private, the entertainment benefit is likely worth the risk.
+Activity 2 Questions:
 
 1. Cereal
-
-2. Lies!
-
 3. public class Cereal
-
 4. 15 instance variables
+5. String name, String type, int calories, int protein, int fat, int sodium, double fiber, double carbs, int sugar, int potassium, int vitamins, int shelf, double weight, double cups, double rating.
+8. Which of the listed cereals has the highest carbohydrate content?
+9. Which of the listed cereals has the highest rating?
+10. We could add a rating attribute with an acessor method to our class.
 
-5. String name, String type, int calories, int protein, int fat, int sodium, double fiber, double carbs, int sugar, int potassium, int vitamins, int shelf, double weight, double cups, double rating
-
-<TNPG>'s CSV FLOW:
-<insert your description of your tools and workflow in creating, editing CSV files>
-
+Activity 3 Questions:
+1. The temperatur at Atlanta, Hartsfield - Jackson Atlanta International Airport, GA is 66.0F
+2. PHTO: The temperature at Hilo, Hilo International Airport, HI is 77.0F
+4. 2877
+5. We could use latitude or longitude.
+6. NSTU: Pago Pago, AS, Samoa
+7. What is the westernmost weather station?
+8. We would write a getLon() method to return the longitude, and then traverse through the ArrayList to find the westernmost station.
+9. We would need one accessor method and would need to slightly modify our loop for the southernMost station.
+<Team Trio of Two>'s CSV FLOW:
+Our data on Rubik's cube competitions came as a TSV. We imported this into Excel in order to view all the data at once.
 
 TRUBZ
 <this lab involves using tools that are likely to introduce hiccups; log any troubleshooting issues here>
