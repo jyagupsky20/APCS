@@ -1,3 +1,9 @@
+Team Trio of Two :: Joshua Yagupsky, Jonathan Song
+APCS
+LAB08 -- Data
+2022-04-05
+time spent: 3.0 hr
+
 /*
  Represents information about a NWS weather station
 */

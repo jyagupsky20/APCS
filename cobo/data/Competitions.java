@@ -1,3 +1,9 @@
+Team Trio of Two :: Joshua Yagupsky, Jonathan Song
+APCS
+LAB08 -- Data
+2022-04-05
+time spent: 3.0 hr
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
