@@ -8,32 +8,31 @@ time spent: 0.1 hr
 DISCO
 
 QCC
-
 */
 
-import java.util.LinkedList;
-public class LLQueue<T> implements Queue<T> {
-	private LinkedList<T> _list;
-	public LLQueue(){
-		_list = new LinkedList<T>();
+import java.util.ArrayList;
+public class ALQueue<T> implements Queue<T> {
+	private ArrayList<T> _list;
+	public ALQueue(){
+		_list = new ArrayList<T>();
 	}
 	public void enqueue(T val){
-		_list.addLast(val);
+		_list.add(0, val);
 	}
 	public T dequeue(){
 		if(!isEmpty()){
-			return _list.removeFirst();
+			return _list.remove(_list.size()-1);
 		}
 		return null;
 	}
 	public T peekFront(){
-		return _list.getFirst();
+		return _list.get(_list.size()-1);
 	}
 	public boolean isEmpty(){
 		return _list.isEmpty();
 	}
 	public static void main(String[] args) {
-		LLQueue<Integer> q = new LLQueue<Integer>();
+		ALQueue<Integer> q = new ALQueue<Integer>();
 		for (int i = 0; i < 80; i+=2 ) {
 			q.enqueue(i);
 		}
