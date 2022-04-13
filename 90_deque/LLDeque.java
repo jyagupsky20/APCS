@@ -39,35 +39,7 @@ public class LLDeque<E> implements Deque<E>{
 	public E removeLast(){
 		return _list.removeLast();
 	}
-	public static void main(String[] args) {
-		Deque<Integer> frenchDeck = new LLDeque<Integer>();
-		System.out.println("Empty?: " + frenchDeck.isEmpty());
-		System.out.println("Size: " + frenchDeck.size());
-		//Adding elements on both sides
-		for (int i = 0;i < 10 ;i++ ) {
-			if (i % 2 == 0) {
-				frenchDeck.addFirst(i);
-			}
-			else {
-				frenchDeck.addLast(i);
-			}
-		}
-		System.out.println("Empty?: " + frenchDeck.isEmpty());
-		System.out.println("Size: " + frenchDeck.size());
-		//Iterator
-		for (Integer i : frenchDeck) {
-			System.out.println(i);
-		}
-		//Getting and removing elements from both sides
-		for(int i = 0; i < 5; i++){
-			System.out.println(frenchDeck.getFirst());
-			frenchDeck.removeFirst();
-		}
-		for(int i = 0; i < 5; i++){
-			System.out.println(frenchDeck.getLast());
-			frenchDeck.removeLast();
-		}
-		System.out.println("Empty?: " + frenchDeck.isEmpty());
-		System.out.println("Size: " + frenchDeck.size());
+	public boolean contains(Object o){
+		return _list.contains(o);
 	}
 }

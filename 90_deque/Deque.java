@@ -14,4 +14,6 @@ public interface Deque<E> extends Iterable<E>{
 	public E getLast();
 	public boolean isEmpty();
 	public int size();
+	public boolean contains(Object o);
+	//public Iterator<E> descendingIterator();
 }
