@@ -1,8 +1,8 @@
 /*
 Team Something Important: Joshua Yagupsky, Jaylen Zeng, Jonathan Song
 APCS pd7
-HW90 -- Queue Two Ways
-2022-04-11
+HW91 -- Deque the Halls
+2022-04-13
 time spent: 0.2 hr
 */
 import java.util.LinkedList;
@@ -41,5 +41,8 @@ public class LLDeque<E> implements Deque<E>{
 	}
 	public boolean contains(Object o){
 		return _list.contains(o);
+	}
+	public Iterator<E> descendingIterator(){
+		return _list.descendingIterator();
 	}
 }
