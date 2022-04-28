@@ -1,0 +1,66 @@
+Team Cautious Crustaceans (Orion Roven, Joshua Yagupsky, Jonathan Song)
+APCS pd7
+L09 -- Some Folks Call It a Charades
+2022-04-26w
+time spent: 2 hrs
+
+DISCO:
+* In the setupPanel() method in the StarPanel class it was helpful to add all of
+ the instance variable and remove the ones that gave us errors
+
+QCC:
+*
+
+Activity1:
+1. We might need a Celebrity class which represents a single celebrity, and a CelebrityGame class for running the game.
+We could also create subclasses of Celebrity for more specific types, such as artists or actors.\
+2. For the Game class, we would need an ArrayList of Celebrities (the hat in the actual game) and a current Celebrity.
+3. It would likely have a play behavior which would run all the functionality. This would require a behavior that allows the user to enter in Celebrity info,
+and a method that would show the clue to the user and accept guesses. We would need some way to processing these guesses.
+4. Most of these previously listed behaviors might become methods. However, some methods are only run once, such as allowing user entry, so we could directly incorporate those into the methods that call them.
+5. Play should do the following:
+Call the method that allows the user to add the list of Celebrities
+Pick a random celebrity and start a timer
+Accept user input and process the guesses
+Check if there are any more celebrities left and potentially give the user a new one
+6. A person has a name, address, place of work, etc. The address is itself an object which has multiple fields.
+
+Activity2:
+1. A constructor creates a new instance of a class
+2. It starts with the public keyword, and is followed by the name of the class. It then takes parameters, and sets class fields in the main body of the constructor method.
+3. We need a name and clue
+4. We need to have a constructor method, and we need accessor methods for the name and clue.
+7. We could make a default constructor as follows:
+public Celebrity(){
+_name = "";
+_clue = "";
+}
+
+Activity 3:
+3. It should be private.
+12. CelebrityGame
+13. It only interacts with celebrities through CelebrityGame.
+
+Activity 4:
+1. An actor has a filmography, which is a list of Strings.
+It should also have an acessor for this list.
+17. The method has the same name and signature as a method in the parent class.
+18. The super keyword
+19. The extends keyword
+20. The subclass's method
+
+Activity 5:
+1. It was relatively easy to implement but did show how polymorphic code works
+2. We first made the superclass, and then modified its behavior in the subclasses.
+3. We could have a duck, which would override the makeNoise method to quack. This would provide some animal variety.
+4. Dog and Cat extend Animal.
+5.
+ArrayList<Animal> theList = new ArrayList<Animal>();
+theList.add(new Animal("Mr. Default Animal"));
+theList.add(new Dog("Rover"));
+theList.add(new Cat("Socks"));
+for(Animal a: theList){
+  a.makeNoise();
+}
+
+We would need to check the specific type of animal before making each noise.
