@@ -1,0 +1,166 @@
+Team Catious Crustaceans :: Orion Roven, Joshua Yagupsky, Johnathan Song
+APCS pd0
+HW94 -- reverse engineering
+2022-05-08
+time spent: 1 hrs
+
+
+DISCO
+------------------------------------------------
+* The Catalan numbers count the number of tree shapes given a certain number of nodes
+================================================
+
+
+QCC
+------------------------------------------------
+* Are there any ways (other than pre-order, in-order, and post-order) to traverse a binary tree? Perhaps reading each level of the tree from left to right?
+* How could you read each level of a tree from left to right algorithmically?
+================================================
+
+
+HOW KEEN ARE YOUR POWERS OF OBSERVATION?
+------------------------------------------------
+Q: For a given binary tree, how many unique pre-order traversals are there?
+A: Only one, because if you follow the instructions process self, left, right, then only one unique path will be shown.
+
+Q: For a given binary tree, how many unique in-order traversals are there?
+A: Only one, because the algorithm for in-order traversal is deterministic: it requires no choices from the user.
+
+Q: For a given binary tree, how many unique post-order traversals are there?
+A: Only one, because the algorithm for post-order traversal is deterministic: it requires no choices from the user.
+
+Q: For a given in-order traversal, how many unique trees could have produced it?
+A: So long as the ordering of the nodes from left to right is the same in any two trees, they will have the same in-order traversal.
+We can denote the number of "tree shapes" you can create with n nodes as f(n). To create a binary tree with n nodes, we first create our root node.
+We then make our left subtree out of k nodes and the right subtree out of f(n-k-1) nodes. Thus, the formula for f(n) is:
+f(0) = 1
+f(1) = 1
+f(n) = f(0)f(n-1)+f(1)f(n-2)+f(3)f(n-4)....f(n-2)f(1)+f(n-1)f(0)
+This sequence is known as the Catalan numbers, and its first few elements are 1,1,5, and 14. They give us the number of binary tree shapes, and if we label the nodes from left to right,
+they tell us the number of trees for a given in-order traversal.
+
+Q: Given a pre-order traversal, what can you infer about its tree?
+A: The root is the leftmost element
+
+Q: Given a post-order traversal, what can you infer about its tree?
+A: The root is the right-most element
+
+Q: What does "1-to-1" mean?
+A: A function f is called one-to-one if two distinct inputs cannot produce the same output.
+
+Q: What does "onto" mean?
+A: A function f is called onto if for every possible element in the output set (which we'll call y),
+there is at least one element in the input set (which we'll call x) such that f(x)=y
+
+================================================
+
+
+ALGO for reforestation from a pre-order and in-order traversal
+------------------------------------------------
+givens: pre-order traversal and in-order traversal
+
+procedure:
+1. Let the leftmost non-crossed out element in your pre-order traversal which is also in your in-order traversal be the root of your tree.
+2. Cross out the root element in both your pre and in order traversal.
+3. Create the left subtree by applying this algorithm with the same pre-order traversal but the in-order traversal consists of all elements to the left of the root.
+4. Create the right subtree by applying this algorithm with the same pre-order traversal but the in-order traversal consists of all elements to the right of the root.
+
+Example:
+In-order: CBDAFE
+Pre-order: ABCDEF
+Root is A: Tree looks like (A, _, _)
+In-order: CBD(A)FE
+Pre-order: (A)BCDEF
+Left subtree:
+  In-order: CBD
+  Pre-order: (A)BCDEF
+  Root is B: Tree looks like (B, _, _)
+  In-order: C(B)D
+  Pre-order: (AB)CDEF
+  Left subtree:
+    In-order: C
+    Pre-order: (AB)CDEF
+    Root is C: Tree looks like (C, _, _)
+    In-order: (C)
+    Pre-order: (ABC)DEF
+    There are no elements in the in-order traversal, the element is a leaf
+  Tree looks like (B, (C), (D))
+  Right subtree:
+    In-order: D
+    Pre-order: (AB)CDEF
+    Root is D: Tree looks like (D, _, _)
+    In-order: (D)
+    Pre-order: (AB)C(D)EF
+    There are no elements in the in-order traversal, the element is a leaf
+  Tree looks like (B, (C), (D))
+Tree looks like (A, (B, (C, _, _), (D, _, _)), _)
+Right subtree:
+  In-order: FE
+  Pre-order: (A)BCDEF
+  Root is E: Tree looks like (E, _, _)
+  In-order: F(E)
+  Pre-order: (A)BCD(E)F
+  Left subtree:
+    In-order: F
+    Pre-order: (A)BCD(E)F
+    Root is F: Tree looks like (F, _, _)
+    There are no elements in the in-order traversal, the element is a leaf
+  Tree looks like (E, (F, _, _), _)
+  There are no elements in the right subtree
+  Tree looks like (E, (F, _, _), _)
+Tree looks like (A, (B, (C, _, _), (D, _, _)), (E, (F, _, _), _))
+================================================
+
+ALGO for reforestation from a pre-order and post-order traversal
+------------------------------------------------
+givens: pre-order traversal and post-order traversal
+
+procedure:
+1. Let the leftmost non-crossed out element in your pre-order traversal or the rightmost non-crossed out element in your post-order traversal be the root of your tree.
+2. Cross out the root element in both your pre and post order traversal.
+3. Take the first element after the root in the pre-order traversal call this the pivot. To get the left subtree, apply the algorithm where the post-order traversal consists of
+the sequence of elements in the post-order traversal before the pivot and including the pivot, and the pre-order traversal consists of the same elements as the post order traversal but in the order of the pre-order traversal.
+4. Apply the algorithm on all of the remaining elements to get the right subtree.
+
+Example:
+Pre-order: (A)BCDEF
+Post-order: CDBFE(A)
+
+Tree looks like (A, _, _)
+Designate B as pivot
+Left subtree:
+  Pre-order: (B)CD
+  Post-order: CD(B)
+  Tree looks like (B, _, _)
+  Designate C as the pivot
+  Left subtree:
+    Pre-order: (C)
+    Post-order: (C)
+    Tree looks like: (C, _, _)
+  Tree looks like (B, (C, _, _), _)
+  Right subtree:
+    Pre-order: (D)
+    Post-order: (D)
+    Tree looks like: (D, _, _)
+  Tree looks like (B, (C, _, _), (D, _, _))
+Tree looks like (A, (B, (C, _, _), (D, _, _)), _)
+Right subtree:
+  Pre-order: (E)F
+  Post-order: F(E)
+  Tree looks like: (E, _, _)
+  Left subtree:
+    Pre-order: (F)
+    Post-order: (F)
+    Tree looks like: (F, _, _)
+  Tree looks like (E, (F, _, _), _)
+Tree looks like (A, (B, (C, _, _), (D, _, _)), (E, (F, _, _), _))
+================================================
+
+ALGO for reforestation from a in-order and post-order traversal
+------------------------------------------------
+givens: in-order traversal and post-order traversal
+
+procedure:
+Same procedure as for an in-order and pre-order traversal, except root nodes are on the right, not the left.
+================================================
+(replicate the algo section above as many times as necessary for distinct algos)
