@@ -1,0 +1,17 @@
+Team Cautious Crustaceans :: Orion Roven, Joshua Yagupsky, Johnathan Song
+APCS pd7
+HW95 -- Algorithm as Data Structure
+2022-05-10t
+time elapsed: .5 hrs
+
+DISCO:
+Be very careful with copy and paste!
+Null pointers are a pain to deal with, be sure you're doing so correctly.
+Null pointer exceptions do not exist in Rust.
+
+QCC:
+
+
+1. (2^h)-1
+2. Either 2^d or 2^(L-1)
+3. 1 + floor (log_2(n))
