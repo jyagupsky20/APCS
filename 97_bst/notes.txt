@@ -1,0 +1,12 @@
+Team Cautious Crustaceans :: Orion Roven, Joshua Yagupsky, Jonathan Song
+APCS pd7
+HW97 -- Prune Your Tree
+2022-05-12r
+time spent: 1 hrs
+
+DISCO:
+* Be sure to check the nice helper methods Mr. Mykolyk left you so you don't have to rewrite
+behavior in your methods!
+
+QCC:
+* How would removing work recursively?
