@@ -1,3 +1,10 @@
+/**
+Team Cautious Crustaceans :: Orion Roven, Joshua Yagupsky, Jonathan Song
+APCS pd7
+HW99 -- Some Are More Equal Than Others Codified
+2022-05-15
+time spent: 0.5 hrs
+**/
 import java.util.ArrayList;
 public class ArrayPriorityQueue implements PriorityQueue {
     private ArrayList<Integer> _queue; //Holds the queue
@@ -41,5 +48,5 @@ public class ArrayPriorityQueue implements PriorityQueue {
             System.out.println(q.peekMin());
             q.removeMin();
        }
-}
+    }
 }
